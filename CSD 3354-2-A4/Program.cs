@@ -5,32 +5,34 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CSD_3354_2_A4
+namespace CSD3354_2_A4
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Downloading file");
+            Console.WriteLine("downloading file");
             Download();
             Console.ReadLine();
-        }
-
-        static async void Download()
-        {
-            await Network.Download();
-            Console.WriteLine("Download Complete");
-
 
         }
-    }
-        class Network
+
+        static void Download()
         {
-            static public Task Download()
-            {
-                return Task.Run(() => Thread.Sleep(3000));
-            }
+            Network.Download((message) => Console.WriteLine("Download complete " + message));
         }
     }
 
-    
+    // Imaginary external network library
+
+    class Network
+    {
+        static public void Download(Action<String> callback)
+        {
+            Task.Run(() => {
+                Thread.Sleep(3000);
+                callback("completed");
+            });
+        }
+    }
+}
