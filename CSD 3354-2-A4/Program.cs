@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace CSD_3354_2_A4
@@ -19,7 +20,7 @@ namespace CSD_3354_2_A4
             {
                 Task.Run(() => 
                 {
-                    Thread.Sleep(3000);
+                    Thread.Sleep(5000);
                     Console.WriteLine("Download Complete");
                 });
 
